@@ -19,6 +19,7 @@ router.post('/', function(req, res) {
   User.create(req.body.user, function(err, userData) {
     res.json(userData)
   })
+  res.redirect('/');
 })
 
 
