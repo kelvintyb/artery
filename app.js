@@ -9,22 +9,30 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var mongoose = require('mongoose');
 var configDB = require('./config/database.js')
+var dotenv = require('dotenv');
 
 mongoose.Promise = global.Promise
   //NOTE: process.env.NODE_ENV is your node js env
   //SETUP of db connections & module use for server requests
-if (process.env.NODE_ENV === 'production') {
-  mongoose.connect('mongodb://closecl:3360507@ds061076.mlab.com:61076/artery')
-} else {
-  mongoose.connect('mongodb://localhost/artery')
-}
+  // if (process.env.NODE_ENV === 'production') {
+  //   mongoose.connect('mongodb://closecl:3360507@ds061076.mlab.com:61076/artery')
+  // } else {
+  //   mongoose.connect('mongodb://localhost/artery')
+  // }
+  //replacement of above portion =
+dotenv.load({
+  path: '.env.' + process.env.NODE_ENV
+})
+mongoose.connect(process.env.MONGO_URI);
+
 app.use(logger('dev'));
 app.use(cookieParser());
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
-    extended: true
-  }))
-  //templating setup
+  extended: true
+}))
+
+//templating setup
 app.use(layout)
 app.set('view engine', 'ejs')
   //passport SETUP
@@ -41,7 +49,7 @@ app.use(express.static(__dirname + '/public'))
 
 //ROUTES
 //NOTE: routes.js below refers to main route js that consolidates all route js files
-require('./app/routes.js')(app, passport);
+// require('./app/routes.js')(app, passport);
 
 
 //UNCOMMENT LATER
