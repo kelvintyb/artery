@@ -40,10 +40,13 @@ app.use(express.static(__dirname + '/public'))
 
 
 //ROUTES
-var userRoutes = require('./routes/users')
-app.use('/users', userRoutes)
-  //NOTE: routes.js below refers to main route js that consolidates all route js files
+//NOTE: routes.js below refers to main route js that consolidates all route js files
 require('./app/routes.js')(app, passport);
+
+
+//UNCOMMENT LATER
+// var userRoutes = require('./routes/users')
+// app.use('/users', userRoutes)
 
 //listen to port from Heroku or 3000 for local testing
 app.listen(process.env.PORT || 3000)
