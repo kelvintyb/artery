@@ -19,7 +19,7 @@ mongoose.Promise = global.Promise
   // } else {
   //   mongoose.connect('mongodb://localhost/artery')
   // }
-  //replacement of above portion =
+  //replacement of above portion is below:
 dotenv.load({
   path: '.env.' + process.env.NODE_ENV
 })
@@ -50,7 +50,6 @@ app.use(express.static(__dirname + '/public'))
 //ROUTES
 //NOTE: routes.js below refers to main route js that consolidates all route js files
 // require('./app/routes.js')(app, passport);
-
 
 //UNCOMMENT LATER
 // var userRoutes = require('./routes/users')
