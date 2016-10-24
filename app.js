@@ -3,12 +3,12 @@ var app = express();
 var layout = require('express-ejs-layouts');
 var bodyParser = require('body-parser');
 var passport = require('passport');
+var MongoStore = require('connect-mongo')(session);
 var flash = require('connect-flash')
 var logger = require('morgan')
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var mongoose = require('mongoose');
-var configDB = require('./config/database.js')
 var dotenv = require('dotenv');
 
 mongoose.Promise = global.Promise
@@ -29,31 +29,33 @@ app.use(logger('dev'));
 app.use(cookieParser());
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
-  extended: true
-}))
-
-//templating setup
+    extended: true
+  }))
+  //templating setup
 app.use(layout)
 app.set('view engine', 'ejs')
   //passport SETUP
 app.use(session({
-  secret: 'hi this is artery'
-}));
+  secret: process.env.EXPRESS_SECRET,
+  resave: true,
+  saveUninitialized: true,
+  store: new MongoStore({
+    url: process.env.MONGO_URI,
+    autoReconnect: true
+  })
+}))
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(flash())
+require('./config/passport')(passport);
 
 // serve static files
 app.use(express.static(__dirname + '/public'))
 
-
-//ROUTES
-//NOTE: routes.js below refers to main route js that consolidates all route js files
-// require('./app/routes.js')(app, passport);
-
 //UNCOMMENT LATER
-// var userRoutes = require('./routes/users')
-// app.use('/users', userRoutes)
+var userRoutes = require('./routes/users')
+  // var api
+  // app.use('/users', userRoutes)
 
 //listen to port from Heroku or 3000 for local testing
 app.listen(process.env.PORT || 3000)
