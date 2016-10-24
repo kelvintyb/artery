@@ -14,9 +14,8 @@ router.route('/')
       .post(function(req,res){
         Painting.create(req.body.painting, function(err, savedPainting) {
           if (err) throw new Error(err);
-          res.redirect('/')
+          res.redirect('/paintings')
         })
       })
-
 
 module.exports = router

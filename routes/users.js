@@ -13,13 +13,19 @@ function authCheck(req, res, next){
     return next();
   }
 }
+
 //homepage route
 // router.get('/', )
-
+// router.route('/curator')
+//       .get(authCheck, function(req,res){
+//
+//
+//       })
 //signup routes
 //NOTE: logic for setting flash messages are in the passport.js config file
 router.route('/signup')
   .get(authCheck, function(req, res) {
+    //NOTE: can use below for index of users in api
     User.find({}, function(err, allUsers) {
       res.render('users/index', {
         allUsers: allUsers,
@@ -29,14 +35,14 @@ router.route('/signup')
   })
   //posted from signup.ejs form
   .post(passport.authenticate('local-signup', {
-    successRedirect: '/profile',
+    successRedirect: '/curator',
     failureRedirect: '/signup',
     failureFlash: true
   }))
 
 //Log-in routes
 router.route('/login')
-  .get(function(req, res) {
+  .get(authCheck, function(req, res) {
     res.render('users/login', {
       message: req.flash('loginMessage')
     })
@@ -62,7 +68,7 @@ router.get('/profile', function(req, res) {
 
 router.get('/logout', function(req, res) {
   req.logout();
-  res.redirect('/signup');
+  res.redirect('/login');
 })
 
 module.exports = router

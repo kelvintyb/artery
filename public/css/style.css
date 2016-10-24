@@ -4,6 +4,6 @@ body {
   color: black;
 }
 
-input[type="submit"], input[type="submit"]:hover {
-  color: black;
+.new-painting, .painting{
+  padding: 2em;
 }
