@@ -7,11 +7,11 @@ var userSchema = new mongoose.Schema({
     password: String,
   },
   likeList: [{
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Painting'
   }],
   ownList: [{
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Painting'
   }],
   categoryScore: Number

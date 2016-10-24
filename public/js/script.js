@@ -1,4 +1,6 @@
 $(document).ready(function($) {
+
+  //this logic is for ajax calls only
   var $userForm = $('.new-user')
 
   $userForm.on('submit', function(e) {

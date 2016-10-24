@@ -3,7 +3,7 @@ var router = express.Router()
 var passport = require('passport')
 var User = require('../models/user')
 
-function authCheck(req, res, next)
+function authCheck(req, res, next){
 //using passport's isAuthenticated method to check against session cookie
   if (req.isAuthenticated()) {
     req.flash('signupMessage', 'You have logged in already la')
@@ -13,7 +13,6 @@ function authCheck(req, res, next)
     return next();
   }
 }
-
 //homepage route
 // router.get('/', )
 
@@ -44,8 +43,9 @@ router.route('/login')
   })
   //USE CUSTOM CALLBACKS HERE TO REFACTOR INTO AJAX-FRIENDLY LOGIN
   .post(passport.authenticate('local-login', {
+    //NOTE: redirect to /home later when pref/recommendation functionality is done
     successRedirect: '/profile',
-    failureRedirect: '/login',
+    failureRedirect: '/error',
     failureFlash: true
   }))
 

@@ -3,7 +3,6 @@ module.exports = function(passport) {
 
   var User = require('../models/user');
   passport.serializeUser(function(user, done) {
-    console.log('hi')
     done(null, user.id)
   })
   passport.deserializeUser(function(id, done) {
@@ -25,12 +24,12 @@ module.exports = function(passport) {
       if (foundUser) {
         return next(null, false, req.flash('signupMessage', 'Email has been taken'))
       } else {
-        var newUser = new User({
-          local: {
-            email: email,
-            password: password
-          }
-        });
+        // var newUser = new User({
+        //   local: {
+        //     email: email,
+        //     password: password
+        //   }
+        // });
         // newUser.save(function(err, newUser) {
         //   if (err) throw err;
         //   return next(null, newUser);

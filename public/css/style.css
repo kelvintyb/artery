@@ -1,9 +1,9 @@
 body {
-  background: url('http://wall-papers.info/images/art-background/art-background-19.jpg') no-repeat 100% 100%;
-  background-size: contain;
-  color: white;
+  text-align: center;
+  background: grey;
+  color: black;
 }
 
 input[type="submit"], input[type="submit"]:hover {
-  color: white;
+  color: black;
 }

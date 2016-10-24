@@ -3,11 +3,11 @@ var app = express();
 var layout = require('express-ejs-layouts');
 var bodyParser = require('body-parser');
 var passport = require('passport');
+var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var flash = require('connect-flash')
 var logger = require('morgan')
 var cookieParser = require('cookie-parser');
-var session = require('express-session');
 var mongoose = require('mongoose');
 var dotenv = require('dotenv');
 
@@ -49,14 +49,22 @@ app.use(passport.session())
 app.use(flash())
 require('./config/passport')(passport);
 
+//middleware to access req.user globally
+app.use(function (req, res, next) {
+  global.currentUser = req.user;
+  next();
+});
+
 // serve static files
 app.use(express.static(__dirname + '/public'))
 
+//ROUTES
 var userRoutes = require('./routes/users')
 app.use('/', userRoutes)
-//to access API for paintings
-app.use('/api',apiRoutes)
-
+//NOTE:to access API for paintings
+// var apiRoutes = require('./routes/paintings_api')
+var paintingRoutes = require('./routes/paintings')
+app.use('/paintings', paintingRoutes)
 //listen to port from Heroku or 3000 for local testing
 app.listen(process.env.PORT || 3000)
 console.log('Server started')
