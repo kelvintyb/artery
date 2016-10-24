@@ -52,10 +52,10 @@ require('./config/passport')(passport);
 // serve static files
 app.use(express.static(__dirname + '/public'))
 
-//UNCOMMENT LATER
 var userRoutes = require('./routes/users')
-  // var api
-  // app.use('/users', userRoutes)
+app.use('/', userRoutes)
+//to access API for paintings
+app.use('/api',apiRoutes)
 
 //listen to port from Heroku or 3000 for local testing
 app.listen(process.env.PORT || 3000)

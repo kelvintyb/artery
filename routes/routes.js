@@ -1,3 +1,5 @@
+//ONLY USE THESE ROUTES WHEN REFACTORING INTO SINGLE PAGE APP
+
 module.exports = function(app, passport) {
   app.get('/', function(req, res) {
     res.render('index.ejs');
