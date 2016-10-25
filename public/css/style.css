@@ -4,6 +4,6 @@ body {
   color: black;
 }
 
-.new-painting, .painting{
+.new-painting, .painting, .artshow{
   padding: 2em;
 }
