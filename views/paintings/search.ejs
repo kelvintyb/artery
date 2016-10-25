@@ -1,0 +1,40 @@
+<h2>Create new painting</h2>
+<form class="new-painting container" action="/paintings" method="post">
+
+  <div class="row">
+    <div class="four columns">
+      <input type="text" name="painting[name]" id="painting-name" placeholder="Painting Name" class="u-full-width" required>
+    </div>
+    <div class="four columns">
+      <input type="text" name="painting[category]" id="painting-category" placeholder="Category" class="u-full-width" required>
+    </div>
+    <div class="four columns">
+      <input type="text" name="painting[artist]" id="painting-artist" placeholder="Artist" class="u-full-width" required>
+    </div>
+
+    <div class="four columns">
+      <input type="text" name="painting[imageUrl]" id="painting-imageUrl" placeholder="Image Link here" class="u-full-width" required>
+    </div>
+    <div class="four columns">
+      <input type="text" name="painting[price]" id="painting-price" placeholder="Price" class="u-full-width">
+    </div>
+    <div class="four columns">
+      <input type="text" name="painting[permalink]" id="painting-permalink" placeholder="Permalink here" class="u-full-width">
+    </div>
+  </div>
+  <input type="submit" value='Save My User'>
+</form>
+
+  <div class="all-painting-list container">
+  <% allPaintings.forEach(function(painting) { %>
+  <div class="col-md-4 painting">
+    <a href=<%= painting.permalink %>>
+        Name: <%= painting.name %><br>
+        Category: <%= painting.category %><br>
+        Artist: <%= painting.artist %><br>
+        <img class='img-thumbnail' src=<%= painting.imageUrl %> alt=<%= painting.name %> style="width:150px;height:150px"><br>
+        Price: <%= painting.price %><br>
+    </a>
+  </div>
+  <% }) %>
+</div>

@@ -1,6 +1,10 @@
 
-use mongoose model update to change attributes
-do ajax call on the artshow div => find model again and randomise => .remove element in the div and 
+1) use mongoose model update to change attributes
+do ajax call on the artshow div => find model again and randomise => .remove element in the div and
+
+2) infinite scrolling
+
+
 
 
 

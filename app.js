@@ -12,14 +12,7 @@ var mongoose = require('mongoose');
 var dotenv = require('dotenv');
 
 mongoose.Promise = global.Promise
-  //NOTE: process.env.NODE_ENV is your node js env
-  //SETUP of db connections & module use for server requests
-  // if (process.env.NODE_ENV === 'production') {
-  //   mongoose.connect('mongodb://closecl:3360507@ds061076.mlab.com:61076/artery')
-  // } else {
-  //   mongoose.connect('mongodb://localhost/artery')
-  // }
-  //replacement of above portion is below:
+
 dotenv.load({
   path: '.env.' + process.env.NODE_ENV
 })
@@ -49,7 +42,7 @@ app.use(passport.session())
 app.use(flash())
 require('./config/passport')(passport);
 
-//middleware to access req.user globally
+//middleware to access req.user globally for ajax requests
 app.use(function (req, res, next) {
   global.currentUser = req.user;
   next();
@@ -62,7 +55,8 @@ app.use(express.static(__dirname + '/public'))
 var userRoutes = require('./routes/users')
 app.use('/', userRoutes)
 //NOTE:to access API for paintings
-// var apiRoutes = require('./routes/paintings_api')
+var apiRoutes = require('./routes/paintings_api')
+app.use('/api/paintings',apiRoutes)
 var paintingRoutes = require('./routes/paintings')
 app.use('/paintings', paintingRoutes)
 //listen to port from Heroku or 3000 for local testing

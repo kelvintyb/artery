@@ -7,7 +7,10 @@ var paintingSchema = new mongoose.Schema({
   imageUrl: String,
   price: Number,
   permalink: String,
-  likes: Number,
+  likes: {
+    type: Number,
+    default: 0
+  },
   ownedBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'

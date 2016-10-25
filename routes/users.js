@@ -26,8 +26,25 @@ function randomiser(arr) {
   return arr[rand];
 }
 //homepage route
-// router.get('/', )
-
+router.get('/',function(req,res){
+  res.redirect('/login')
+})
+//owned route
+router.route('/owned')
+      .get(authPass, function(req,res){
+        res.render('paintings/owned')
+      })
+//search route
+router.route('/search')
+      .get(authPass, function(req,res){
+        res.render('paintings/search')
+      })
+//add route
+router.route('/add')
+      .get(authPass, function(req,res){
+        res.render('paintings/add')
+      })
+// route for Curator page
 router.route('/curator')
       .get( authPass, function(req,res){
         Painting.find({}, function(err, allPaintings){
@@ -87,4 +104,7 @@ router.get('/logout', function(req, res) {
   res.redirect('/login');
 })
 
+router.get('/testing',function(req,res){
+  res.json(req.user)
+})
 module.exports = router

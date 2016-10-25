@@ -7,3 +7,11 @@ body {
 .new-painting, .painting, .artshow{
   padding: 2em;
 }
+
+i{
+  display:inline-block;
+  margin: 0 1em;
+}
+i:hover{
+  cursor: pointer;
+}

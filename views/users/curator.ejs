@@ -1,15 +1,17 @@
 <a href="/logout"><button type="button" name="button">Logout</button></a>
 
 <h2>Curator</h2>
-<p>Thumbs up if you like it!</p>
 
 <section class="col-md-12 artshow">
-  <%# %>
-      <img class='' src=<%= painting.imageUrl %> alt=<%= painting.name %> style="width:400px;height:400px"><br>
-      <p><a href=<%= painting.permalink %>>See more</a></p>
-      <p>Thumbs up if you like it!</p>
+  <div class='paintingContainer'>
+    <a href=<%= painting.permalink %> target="_blank">
+    <img class='well' src=<%= painting.imageUrl %> alt=<%= painting.name %> style="width:400px;height:400px"></a><br>
+    <p>Likes: <%=painting.likes%></p>
 
-
-  <i class="fa fa-thumbs-up" aria-hidden="true"></i>
-  <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+    <form class="btn" method="POST" action="/api/paintings/updatelikes">
+      <input type="hidden" value=<%= painting.id %> name="paintingId" \>
+      <button type="submit" class="btn btn-default"><i class="fa fa-thumbs-up fa-3x" style="color:green" aria-hidden="true"></i></button>
+    </form>
+    <a href="/curator" class='thumbs-down'><i class="fa fa-thumbs-down fa-3x" style="color:red" aria-hidden="true"></i></a>
+  </div>
 </section>
