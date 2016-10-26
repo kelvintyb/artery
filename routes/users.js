@@ -32,21 +32,27 @@ router.get('/',function(req,res){
 //search route
 router.route('/search')
       .get(authPass, function(req,res){
-        res.render('paintings/search');
+        Painting.find({}, function(err, allPaintings) {
+          res.render('paintings/search', {
+            allPaintings: allPaintings
+          })
       })
+    })
+
 
 //add route
 router.route('/add')
       .get(authPass, function(req,res){
         if(req.body.paintingName){
           Painting.find({"name":req.body.paintingName})
-          req.body.[stuffinform]
+
+          // req.body.[stuffinform]
 
           res.render('paintings/add')
         }
       })
 //owned route
-router.route('/owned')
+router.route('/portfolio')
       .get(authPass, function(req,res){
 
       })
@@ -113,4 +119,5 @@ router.get('/logout', function(req, res) {
 router.get('/testing',function(req,res){
   res.json(req.user)
 })
+
 module.exports = router

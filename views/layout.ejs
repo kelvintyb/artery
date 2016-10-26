@@ -2,19 +2,33 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Artas - insert witty slogan here</title>
+    <title>Artas siol</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-
     <link rel="stylesheet" href="/css/style.css">
   </head>
-  <body>
-    <div class="container">
-      <h1>ARTAS (siol)</h1>
+  <body class="container text-center">
+     <nav class="navbar navbar-inverse navbar-fixed-top">
+       <div class="container col-md-6">
+         <ul class="nav nav-pills">
+            <li role="presentation"><a href="/curator">Curator</a></li>
+            <li role="presentation"><a href="/portfolio">Your Portfolio</a></li>
+            <li role="presentation"><a href="/search">Search Paintings</a></li>
+        </ul>
+       </div>
+         <div class="navbar-right">
+            <a href="/logout">
+              <button class="btn btn-default btn-danger" type="button">Sign Out</button>
+            </a>
+         </div>
+     </nav>
+     <div class="jumbotron">
+       <h1>Artery<i class="fa fa-gittip" aria-hidden="true"></i></h1>
+     </div>
+     <div class="container">
       <%- body %>
-
     </div>
-      <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-      <script src="/js/script.js" charset="utf-8"></script>
-  </body>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="/js/script.js" charset="utf-8"></script>
+</body>
 </html>

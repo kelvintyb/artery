@@ -14,12 +14,25 @@ function authPass(req,res,next){
 
 router.route('/updatelikes')
       .post(authPass, function(req, res){
-//NOTE: uncomment below when new objects are inserted
-        // Painting.findOne({id:req.body.paintingId}, function(err, model){
-        //   if (err) throw new Error(err);
-        //   model.likes += 1;
-        //   model.save();
-        // })
+        var currPaintingScore = 0,
+            categoryHelper = {
+              "Renaissance": 1,
+              "Post-Impressionism": 2,
+              "Cubism": 3
+            };
+        Painting.findOne({id:req.body.paintingId}, function(err, model){
+          if (err) throw new Error(err);
+          model.likes += 1;
+          currPaintingScore = categoryHelper[model.category]
+          model.save();
+        })
+        User.findOne({id:req.user.id},function(err,model){
+          if (err) throw new Error(err);
+          //calculate avg cat score
+          model.categoryScore = Math.round((model.categoryScore + currPaintingScore) / (model.likeList.length + 1))
+          model.likes += 1;
+          model.save();
+        })
         User.findByIdAndUpdate(req.user.id,{$addToSet:{"likeList":req.body.paintingId}}, function(err,model){
           if (err) throw new Error(err);
           res.redirect('/curator');

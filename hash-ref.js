@@ -6,7 +6,10 @@ do ajax call on the artshow div => find model again and randomise => .remove ele
 
 C) ADD navbar to layouts with links to various user routes
 
+D) Take out ajax login in navbar if needed OR take out login page, and just have a signup
+
 2) infinite scrolling
+
 
 //TEMPLATE FOR USING METHOD OVERRIDE FOR DELETE
 <form method="post" action="/users/1">
@@ -22,9 +25,51 @@ C) ADD navbar to layouts with links to various user routes
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
 
+//navbar template to be put inside navbar for ajax signin
+<form class="navbar-form navbar-right">
+  <div class="form-group">
+    <input type="text" placeholder="Email" class="form-control">
+  </div>
+  <div class="form-group">
+    <input type="password" placeholder="Password" class="form-control">
+  </div>
+  <button type="submit" class="btn btn-success">Sign in</button>
+</form>
 
+//navbar template for category search
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Dropdown
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+</div>
 
-
+//template for search bar
+<div class="row">
+  <div class="col-lg-6">
+    <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+      <input type="text" class="form-control" placeholder="Search for...">
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+  <div class="col-lg-6">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for...">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
 
 
 

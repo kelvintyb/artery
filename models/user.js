@@ -14,7 +14,10 @@ var userSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Painting'
   }],
-  categoryScore: Number
+  categoryScore: {
+    type: Number,
+    default: 0
+  }
 })
 
 //hashing password before save to DB

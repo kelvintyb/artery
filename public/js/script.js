@@ -36,5 +36,41 @@ $(document).ready(function($) {
   //   $('.artshow').append()
   // })
 
+  //ajax call for search.ejs
+  $('#searchName').on('submit', function(e) {
+    e.preventDefault()
+    var query = $(this).seralize();
+    console.log(query);
+    //
+    // $.post({
+    //   url: '/api/users',
+    //   data: formdata
+    // }).done(appendPainting)
+  })
+
+  function appendPainting(data) {
+    // $('#search-painting-list').append('<li>' + data.local.name + '<br>' + data.local.email + '<br>' + data.local.password + '</li>')
+    console.log(data)
+  }
+
+  // $.ajax({
+  //      url: '/api/paintings',
+  //      data: {
+  //         format: 'json'
+  //      },
+  //      error: function() {
+  //         $('#info').html('<p>An error has occurred</p>');
+  //      },
+  //      dataType: 'jsonp',
+  //      success: function(data) {
+  //         var $title = $('<h1>').text(data.talks[0].talk_title);
+  //         var $description = $('<p>').text(data.talks[0].talk_description);
+  //         $('#info')
+  //            .append($title)
+  //            .append($description);
+  //      },
+  //      type: 'GET'
+  //   });
+
 
 })
