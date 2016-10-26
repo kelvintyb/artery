@@ -39,22 +39,15 @@ router.route('/search')
       })
     })
 
-
-//add route
-router.route('/add')
-      .get(authPass, function(req,res){
-        if(req.body.paintingName){
-          Painting.find({"name":req.body.paintingName})
-
-          // req.body.[stuffinform]
-
-          res.render('paintings/add')
-        }
-      })
-//owned route
+//portfolio route for adding / viewing owned art
 router.route('/portfolio')
       .get(authPass, function(req,res){
-
+        console.log(req.user);
+        Painting.find({ownedBy: req.user}, function(err, allPaintings){
+            res.render('users/portfolio',{
+                allPaintings: allPaintings
+            })
+        })
       })
 // route for Curator page
 router.route('/curator')
@@ -94,9 +87,8 @@ router.route('/login')
   })
   //USE CUSTOM CALLBACKS HERE TO REFACTOR INTO AJAX-FRIENDLY LOGIN
   .post(passport.authenticate('local-login', {
-    //NOTE: redirect to /home later when pref/recommendation functionality is done
     successRedirect: '/curator',
-    failureRedirect: '/error',
+    failureRedirect: '/signup',
     failureFlash: true
   }))
 

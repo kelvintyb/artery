@@ -19,19 +19,21 @@ $(document).ready(function($) {
 
   //ajax calls for navbar
   $('#curate-btn').on('click',function(e){
-    window.alert('this feature not in ajax yet, use direct url \/curator')
     // $('#search-page').css('display','none')
     // $('#portfolio-page').css('display','none')
     // $('#curate-page').css('display','initial')
   })
   $('#portfolio-btn').on('click',function(e){
+    swal('if you are trying to get here from curator,  use the direct url as only /portfolio & /search are able to switch between themselves dynamically at this time')
     e.preventDefault();
     // $('#curate-page').css('display','none')
     $('#search-page').css('display','none')
     $('#portfolio-page').css('display','initial')
-    
+
   })
   $('#search-btn').on('click',function(e){
+      swal('Search currently only takes in exact terms')
+      swal('if you are trying to get here from curator,  use the direct url as only /portfolio & /search are able to switch between themselves dynamically at this time')
     e.preventDefault();
     // $('#curate-page').css('display','none')
     $('#portfolio-page').css('display','none')
