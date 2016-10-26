@@ -19,10 +19,24 @@ $(document).ready(function($) {
 
   //ajax calls for navbar
   $('#curate-btn').on('click',function(e){
-    e.preventDefault();
-    window.alert('yo')
+    window.alert('this feature not in ajax yet, use direct url \/curator')
+    // $('#search-page').css('display','none')
+    // $('#portfolio-page').css('display','none')
+    // $('#curate-page').css('display','initial')
   })
-
+  $('#portfolio-btn').on('click',function(e){
+    e.preventDefault();
+    // $('#curate-page').css('display','none')
+    $('#search-page').css('display','none')
+    $('#portfolio-page').css('display','initial')
+    
+  })
+  $('#search-btn').on('click',function(e){
+    e.preventDefault();
+    // $('#curate-page').css('display','none')
+    $('#portfolio-page').css('display','none')
+    $('#search-page').css('display','initial')
+  })
   //ajax calls for search.ejs
   $('#searchName').on('submit', function(e) {
     e.preventDefault()
