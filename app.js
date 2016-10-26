@@ -10,6 +10,7 @@ var logger = require('morgan')
 var cookieParser = require('cookie-parser');
 var mongoose = require('mongoose');
 var dotenv = require('dotenv');
+var methodOverride = require('method-override');
 
 mongoose.Promise = global.Promise
 
@@ -23,6 +24,15 @@ app.use(cookieParser());
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
     extended: true
+  }))
+  // run methodOverride for all requests
+  app.use(methodOverride(function (req, res) {
+    if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+      // look in urlencoded POST bodies and delete it
+      var method = req.body._method
+      delete req.body._method
+      return method
+    }
   }))
   //templating setup
 app.use(layout)

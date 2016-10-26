@@ -1,10 +1,26 @@
+A) UPDATE PAINTING SCHEMA MODELS IN DB => UPDATE LIKES IN THE ROUTES LOGIC
 
+B) ADD /:id logic to url for user routes
 1) use mongoose model update to change attributes
 do ajax call on the artshow div => find model again and randomise => .remove element in the div and
 
+C) ADD navbar to layouts with links to various user routes
+
 2) infinite scrolling
 
-
+//TEMPLATE FOR USING METHOD OVERRIDE FOR DELETE
+<form method="post" action="/users/1">
+  <input type="hidden" name="_method" value="put">
+  <div class="form-group">
+    <label for="name">Username</label>
+    <input type="text" class="form-control" id="name" name="username" placeholder="User Name" value="<%=name%>">
+  </div>
+  <div class="form-group">
+    <label for="year">Password</label>
+    <input type="password" class="form-control" id="year" name="userpassword" placeholder="User password" value="<%=password%>">
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
 
 
 

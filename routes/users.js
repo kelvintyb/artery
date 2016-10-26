@@ -29,20 +29,26 @@ function randomiser(arr) {
 router.get('/',function(req,res){
   res.redirect('/login')
 })
-//owned route
-router.route('/owned')
-      .get(authPass, function(req,res){
-        res.render('paintings/owned')
-      })
 //search route
 router.route('/search')
       .get(authPass, function(req,res){
-        res.render('paintings/search')
+        res.render('paintings/search');
       })
+
 //add route
 router.route('/add')
       .get(authPass, function(req,res){
-        res.render('paintings/add')
+        if(req.body.paintingName){
+          Painting.find({"name":req.body.paintingName})
+          req.body.[stuffinform]
+
+          res.render('paintings/add')
+        }
+      })
+//owned route
+router.route('/owned')
+      .get(authPass, function(req,res){
+
       })
 // route for Curator page
 router.route('/curator')
