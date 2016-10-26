@@ -29,7 +29,7 @@ $(document).ready(function($) {
     // $('#curate-page').css('display','none')
     $('#search-page').css('display','none')
     $('#portfolio-page').css('display','initial')
-
+    
   })
   $('#search-btn').on('click',function(e){
       swal('Search currently only takes in exact terms')

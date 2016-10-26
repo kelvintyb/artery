@@ -1,15 +1,13 @@
-A) UPDATE PAINTING SCHEMA MODELS IN DB => UPDATE LIKES IN THE ROUTES LOGIC
+A) UPDATE PAINTING SCHEMA MODELS IN DB => UPDATE LIKES IN THE ROUTES LOGIC - DONE
 
-B) ADD /:id logic to url for user routes
-1) use mongoose model update to change attributes
+B) ADD /:id logic to url for user routes - DONE
+
+C) IMPLEMENT POST AND DELETE FOR PORTFOLIO PAGE*** both for the ajax calls in script.js and the user route ref portfolio.ejs
+
+D) use mongoose model update to change attributes
 do ajax call on the artshow div => find model again and randomise => .remove element in the div and
 
-C) ADD navbar to layouts with links to various user routes
-
-D) Take out ajax login in navbar if needed OR take out login page, and just have a signup
-
-2) infinite scrolling
-
+E) Take out ajax login in navbar if needed OR take out login page, and just have a signup
 
 //TEMPLATE FOR USING METHOD OVERRIDE FOR DELETE
 <form method="post" action="/users/1">
