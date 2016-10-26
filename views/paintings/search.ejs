@@ -1,44 +1,44 @@
   <div class="col-md-4">
-    <form>
+    <form id="searchName">
       <div class="input-group">
         <span class="input-group-btn">
           <button class="btn btn-default" type="submit">Go!</button>
         </span>
-        <input type="text" id="searchName" class="form-control" name="searchquery" placeholder="Search by painting name">
+        <input type="text" class="form-control" name="name" placeholder="Search by painting name">
       </div><!-- /input-group -->
     </form>
   </div><!-- /.col-md-12 -->
-      <form>
+      <form id="searchCategory">
         <div class="col-md-4">
           <div class="input-group">
             <span class="input-group-btn">
               <button class="btn btn-default" type="submit">Go!</button>
             </span>
-            <input type="text" id="searchCategory" class="form-control" name="searchquery" placeholder="Search by category">
+            <input type="text" class="form-control" name="category" placeholder="Search by category">
           </div><!-- /input-group -->
       </form>
     </div><!-- /.col-md-12 -->
       <div class="col-md-4">
-        <form>
+        <form id="searchArtist">
           <div class="input-group">
             <span class="input-group-btn">
               <button class="btn btn-default" type="submit">Go!</button>
             </span>
-            <input type="text" id="searchArtist" class="form-control" name="searchquery" placeholder="Search by artist name">
+            <input type="text" class="form-control" name="artist" placeholder="Search by artist name">
           </div><!-- /input-group -->
         </form>
       </div><!-- /.col-md-12 -->
 
 
 <div class="row">
-  <div id="search-painting-list" class="all-painting-list">
+  <div id="search-painting-list">
     <% allPaintings.forEach(function(painting) { %>
     <div class="col-md-4 painting">
       <a href=<%= painting.permalink %>>
           Name: <%= painting.name %><br>
           Category: <%= painting.category %><br>
           Artist: <%= painting.artist %><br>
-          <img class='img-thumbnail' src=<%= painting.imageUrl %> alt=<%= painting.name %> style="width:150px;height:150px"><br>
+          <img class='img-thumbnail' src=<%= painting.imageUrl %> alt=<%= painting.name %> style="max-width:18.75em;max-height:25em"><br>
           Price: <%= painting.price %><br>
       </a>
     </div>
