@@ -20,13 +20,14 @@ router.route('/updatelikes')
               "Post-Impressionism": 2,
               "Cubism": 3
             };
-        Painting.findOne({id:req.body.paintingId}, function(err, model){
+        Painting.findById(req.body.paintingId, function(err, model){
+          console.log(model);
           if (err) throw new Error(err);
           model.likes += 1;
           currPaintingScore = categoryHelper[model.category]
           model.save();
         })
-        User.findOne({id:req.user.id},function(err,model){
+        User.findById(req.user.id,function(err,model){
           if (err) throw new Error(err);
           //calculate avg cat score
           model.categoryScore = Math.round((model.categoryScore + currPaintingScore) / (model.likeList.length + 1))
