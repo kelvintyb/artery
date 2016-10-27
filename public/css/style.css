@@ -8,6 +8,7 @@ body {
 }
 
 .jumbotron{
+  width: 100%;
   background:#ECFFF8;
   background-image: url('https://silviahartmann.com/background-tile-art/images/pastel-purple-art-background.jpg');
 }

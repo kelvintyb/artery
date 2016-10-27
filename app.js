@@ -61,20 +61,26 @@ require('./config/passport')(passport);
 
 //middleware to access req.user globally for ajax requests
 app.use(function (req, res, next) {
-  global.currentUser = req.user;
-  next();
-});
+ res.locals.user = req.user
+ next()
+})
 
 // serve static files
 app.use(express.static(__dirname + '/public'))
 
 //ROUTES
 var userRoutes = require('./routes/users')
+var paintingRoutes = require('./routes/paintings')
+var paintingApiRoutes = require('./routes/paintings_api')
+var userApiRoutes = require('./routes/paintings_api')
+
+
 app.use('/', userRoutes)
 //NOTE:to access API for paintings
-var apiRoutes = require('./routes/paintings_api')
-app.use('/api/paintings',apiRoutes)
-var paintingRoutes = require('./routes/paintings')
+app.use('/api/paintings',paintingApiRoutes)
+//NOTE:to access API for users
+app.use('/api/users', userApiRoutes)
+
 app.use('/paintings', paintingRoutes)
 //listen to port from Heroku or 3000 for local testing
 app.listen(process.env.PORT || 3000)

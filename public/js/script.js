@@ -17,7 +17,7 @@ $(document).ready(function($) {
   //   $('.artshow').append()
   // })
 
-  //ajax calls for navbar
+  //ajax calls for navbar-based page population
   $('#curate-btn').on('click',function(e){
     // $('#search-page').css('display','none')
     // $('#portfolio-page').css('display','none')
@@ -83,7 +83,6 @@ $(document).ready(function($) {
       success: fillPortfolioPage
     })
   }
-
   //ajax calls for search function
   $('#searchName').on('submit', function(e) {
     e.preventDefault()
@@ -96,7 +95,6 @@ $(document).ready(function($) {
       success: appendPaintings
     })
   })
-
   $('#searchCategory').on('submit', function(e) {
     e.preventDefault()
     var query = $(this).serializeArray()[0].value;
@@ -108,7 +106,6 @@ $(document).ready(function($) {
       success: appendPaintings
     })
   })
-
   $('#searchArtist').on('submit', function(e) {
     e.preventDefault()
     var query = $(this).serializeArray()[0].value;
@@ -120,7 +117,6 @@ $(document).ready(function($) {
       success: appendPaintings
     })
   })
-
   function appendPaintings(paintingsArr) {
     if (paintingsArr.length == 0) {
       $("#search-painting-list").html('<br><p style="color: red">No painting found. Please try again.</p>')
@@ -133,7 +129,21 @@ $(document).ready(function($) {
       })
     }
   }
-
-
+  //ajax call for editing user
+  $('#update-user-form').on('submit',function(e){
+    e.preventDefault();
+    swal('ajax fired')
+    var formdata = $(this).serializeArray();
+    $.put({
+      url: '/api/users/edit',
+      data: formdata,
+      error: function() {
+        $("#profile-page").append('<br><p style="color: red">Update did not go through. Please try again.</p>')
+      },
+      success: function(){
+        swal('User updated!')
+      }
+    })
+  })
 
 })

@@ -96,7 +96,6 @@ router.post('/create',authPass,function(req,res){
   });
 
   newPainting.save(function(err, newPainting) {
-    console.log(newPainting);
     if (err) throw err;
     User.findByIdAndUpdate(req.user.id, {
       $addToSet: {
@@ -113,7 +112,6 @@ router.post('/create',authPass,function(req,res){
 router.put('/:id',authPass,function(req,res){
   res.send(req.params)
 })
-
 // router.delete
 router.delete('/:id',authPass, function(req,res){
   Painting.findByIdAndRemove(req.params.id,function(err){

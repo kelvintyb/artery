@@ -1,4 +1,21 @@
-<h2>Heyow Logged in User</h2>
-<%= message %>
-
-<a href="/logout"><button type="button" name="button">Logout</button></a>
+<div id="profile-page">
+  <form id="update-user-form" class="form-horizontal" action="/api/users/edit/<%=global.currentUser.id%>?_method=PUT" method="post">
+    <div class="form-group">
+      <label for="new-username" class="control-label col-md-1"> New Username: </label>
+      <div class="col-md-11">
+        <input type="text" id="new-username" name="user[local][username]" placeholder="Your new username" class="form-control">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="new-email" class="control-label col-md-1"> New Email: </label>
+      <div class="col-md-11">
+        <input type="text" id="new-email" name="user[local][email]" placeholder="Your new email" class="form-control">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-1 col-sm-11">
+        <input class="btn btn-default btn-warning" type="submit" value='Save Changes'>
+      </div>
+    </div>
+  </form>
+</div>

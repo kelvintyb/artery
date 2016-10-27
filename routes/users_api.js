@@ -22,6 +22,11 @@ router.post('/', function(req, res) {
   res.redirect('/');
 })
 
+router.put('/edit/:id',function(req,res){
+  console.log(req.body.user)
+  User.findByIdAndUpdate({id: req.params.id}, function(err,user){
 
+  })
+})
 
 module.exports = router
