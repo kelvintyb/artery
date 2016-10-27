@@ -32,7 +32,7 @@
       <div class="row">
         <input class="btn-default btn" type="submit" value="Submit">
       </div>
-    </form>
+  </form>
 
   <div class="all-painting-list row">
       <% allPaintings.forEach(function(painting,index) { %>
@@ -47,10 +47,8 @@
               <img class='img-thumbnail' src=<%= painting.imageUrl %> alt=<%= painting.name %> style="width:16.75em;max-height:23em"><br>
               Price: <%= painting.price %><br>
           </a>
-          <% deleteId = painting.id %>
-          <form method="POST" action="/api/paintings/" + <%= deleteId %> + "?_method=DELETE">
-              <input type="hidden" name="_method" value="DELETE">
-              <button type="submit">Delete</button>
+          <form method="POST" action="/api/paintings/<%= painting.id%>?_method=DELETE">
+            <button class="btn btn-default btn-danger" type="submit">Delete</button>
           </form>
         </div>
       <% if (index === 0 || index % 3 === 0){ %>

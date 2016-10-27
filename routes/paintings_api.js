@@ -110,6 +110,9 @@ router.post('/create',authPass,function(req,res){
   })
 })
 // router.put
+router.put('/:id',authPass,function(req,res){
+  res.send(req.params)
+})
 
 // router.delete
 router.delete('/:id',authPass, function(req,res){

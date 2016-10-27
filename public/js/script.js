@@ -45,7 +45,7 @@ $(document).ready(function($) {
   function fillPortfolioPage(paintings){
     $('.all-painting-list').empty();
     paintings.forEach({
-      $('.all-painting-list').append(painting);
+      // $('.all-painting-list').append(painting);
       //NOTE: LAST LEFT IT OFF HERE 2710 1215pm
     })
   }
@@ -128,7 +128,6 @@ $(document).ready(function($) {
       $("#search-painting-list").empty();
       //BUG:append is overwriting for some reason, solved by using success func in ajax call instead of .done promise
       paintingsArr.forEach(function(painting) {
-        console.log(painting.ownedBy.local.name)
         var insertStr = "<div class='col-md-4 painting'><a href=" + painting.permalink + " target='_blank'>Name: " + painting.name + "<br>Category: " + painting.category + "<br>Artist: " + painting.artist + "<br><img class='img-thumbnail' src=" + painting.imageUrl + " style='max-width:18.75em;max-height:25em'>" + "</a><br>Owned by: " + painting.ownedBy.local.name + "</div>";
         $("#search-painting-list").append(insertStr)
       })

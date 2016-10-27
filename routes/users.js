@@ -42,7 +42,6 @@ router.route('/search')
 //portfolio route for adding / viewing owned art
 router.route('/portfolio')
       .get(authPass, function(req,res){
-        console.log(req.user);
         Painting.find({ownedBy: req.user}, function(err, allPaintings){
             res.render('users/portfolio',{
                 allPaintings: allPaintings
