@@ -28,7 +28,6 @@ $(document).ready(function($) {
 
   }
   $('#portfolio-btn').on('click',function(e){
-
     e.preventDefault();
     // $('#curate-page').css('display','none')
     $('#search-page').css('display','none')
@@ -38,15 +37,18 @@ $(document).ready(function($) {
       url: '/api/paintings/userid/' + req.user.id,
       error: function(){
         $(".all-painting-list").html('<br><p style="color: red">Error on refresh of your portfolio. Please try again.</p>')
-      },
-      success: fillPortfolioPage
-    })
+      }
+    }).done(fillPortfolioPage)
   })
   function fillPortfolioPage(paintings){
     $('.all-painting-list').empty();
-    paintings.forEach({
-      // $('.all-painting-list').append(painting);
+    paintings.forEach(function(painting){
       //NOTE: LAST LEFT IT OFF HERE 2710 1215pm
+      var textNode1 = '<div class="col-md-4 painting"><a href=' + painting.permalink + '> Name: ' + 'painting.name' + '<br>Category: ' + painting.category + '<br>Artist: ' + painting.artist
+      var textNode2 = '<br><img class="img-thumbnail" src=' + painting.imageUrl +  'alt=' + painting.name + 'style="width:16.75em;max-height:23em"><br>Price: ' + painting.price + '<br></a><form method="POST" action="/api/paintings/' + painting.id +  '?_method=DELETE"><button class="btn btn-default btn-danger" type="submit">Delete</button></form></div>'
+
+      $('.all-painting-list').append(textNode1);
+      $('.all-painting-list').append(textNode2);
     })
   }
 
@@ -143,7 +145,6 @@ $(document).ready(function($) {
       },
       success: function(user){
         swal('User updated!')
-        $("profile-page").append(user)
       }
     })
   })

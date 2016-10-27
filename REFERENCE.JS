@@ -2,9 +2,11 @@ A) UPDATE PAINTING SCHEMA MODELS IN DB => UPDATE LIKES IN THE ROUTES LOGIC - DON
 
 B) ADD /:id logic to url for user routes - DONE
 
-C) IMPLEMENT POST AND DELETE FOR PORTFOLIO PAGE*** both for the ajax calls in script.js and the user route ref portfolio.ejs
+C) IMPLEMENT POST AND DELETE FOR PORTFOLIO PAGE*** both for the ajax calls in script.js and the user route ref portfolio.ejs - DONE
 
-FIX SIGNUP UI
+Prep for presentation
+implement full curator
+
 
 D) use mongoose model update to change attributes
 do ajax call on the artshow div => find model again and randomise => .remove element in the div and

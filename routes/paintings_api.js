@@ -20,8 +20,8 @@ router.get('/all', function(req, res) {
         })
 })
 
-router.get('/userid/:userid', function(req,res){
-  var query = {'ownedBy': req.params.userid};
+router.get('/userid', function(req,res){
+  var query = {'ownedBy': req.user.id};
   Painting.find(query)
           .exec(function(err, paintings){
             res.json(paintings)
@@ -102,7 +102,6 @@ router.post('/create',authPass,function(req,res){
       }
     }, function(err, model) {
       if (err) throw new Error(err);
-      console.log(model)
       res.json(model)
     })
   })

@@ -1,5 +1,5 @@
 body {
-  background: #9D96B8;
+  background: #ECFFF8;
   color: #4C191B;
 }
 
@@ -10,7 +10,6 @@ body {
 .jumbotron{
   width: 100%;
   background:#ECFFF8;
-  background-image: url('https://silviahartmann.com/background-tile-art/images/pastel-purple-art-background.jpg');
 }
 
 .new-painting, .painting, .artshow{

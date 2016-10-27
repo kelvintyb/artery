@@ -28,7 +28,6 @@ router.post('/', function(req, res) {
 })
 
 router.put('/edit',function(req,res,next){
-  console.log(req.user)
   User.findById(req.user.id, function(err,model){
     if (req.body.user.local.name !== ""){
       model.local.name = req.body.user.local.name;
