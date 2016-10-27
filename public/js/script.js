@@ -21,14 +21,15 @@ $(document).ready(function($) {
   $('#curate-btn').on('click',function(e){
     // $('#search-page').css('display','none')
     // $('#portfolio-page').css('display','none')
-    // $('#curate-page').css('display','initial')
+    // $('#curate-page').css('display','unset')
+    //populate curate section
   })
   $('#portfolio-btn').on('click',function(e){
     swal('if you are trying to get here from curator,  use the direct url as only /portfolio & /search are able to switch between themselves dynamically at this time')
     e.preventDefault();
     // $('#curate-page').css('display','none')
     $('#search-page').css('display','none')
-    $('#portfolio-page').css('display','initial')
+    $('#portfolio-page').css('display','unset')
     //populate portfolio section
   })
   $('#search-btn').on('click',function(e){
@@ -37,7 +38,7 @@ $(document).ready(function($) {
     e.preventDefault();
     // $('#curate-page').css('display','none')
     $('#portfolio-page').css('display','none')
-    $('#search-page').css('display','initial')
+    $('#search-page').css('display','unset')
     //populate search list
   })
   //ajax calls for search function
