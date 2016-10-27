@@ -16,7 +16,10 @@ $(document).ready(function($) {
   //   $('.paintingContainer').remove();
   //   $('.artshow').append()
   // })
-
+  $('#instructions-btn').on('click',function(e){
+    e.preventDefault();
+    swal('Hello from the other side', '1) Log in or sign up first\n2) At your portfolio, you can view your owned paintings or add new paintings to your collection\n3) Go on to search paintings through the navbar- this is strict search\n4) If you want to see the index, try direct url \/search\n5) At Curator, you can like random art from the database\n6) You may also edit your username or email in the Edit Account page\(\/profile\)'
+  })
   //ajax calls for navbar-based page population
   $('#curate-btn').on('click',function(e){
     // $('#search-page').css('display','none')
@@ -34,7 +37,7 @@ $(document).ready(function($) {
     $('#portfolio-page').css('display','unset')
     //populate portfolio section
     $.get({
-      url: '/api/paintings/userid/' + req.user.id,
+      url: '/api/paintings/userid/',
       error: function(){
         $(".all-painting-list").html('<br><p style="color: red">Error on refresh of your portfolio. Please try again.</p>')
       }
@@ -42,13 +45,18 @@ $(document).ready(function($) {
   })
   function fillPortfolioPage(paintings){
     $('.all-painting-list').empty();
-    paintings.forEach(function(painting){
-      //NOTE: LAST LEFT IT OFF HERE 2710 1215pm
+    paintings.forEach(function(painting,index){
+      //BUG: due to painting.id being undefined - delete buttons no longer works after pressing the portfolio tab on navbar. Consider just refactoring into ajax + embedded templates in the main page
       var textNode1 = '<div class="col-md-4 painting"><a href=' + painting.permalink + '> Name: ' + 'painting.name' + '<br>Category: ' + painting.category + '<br>Artist: ' + painting.artist
       var textNode2 = '<br><img class="img-thumbnail" src=' + painting.imageUrl +  'alt=' + painting.name + 'style="width:16.75em;max-height:23em"><br>Price: ' + painting.price + '<br></a><form method="POST" action="/api/paintings/' + painting.id +  '?_method=DELETE"><button class="btn btn-default btn-danger" type="submit">Delete</button></form></div>'
-
+      if(index === 0 || index % 3 ){
+        $('.all-painting-list').append($.parseHTML('<div class="row">'))
+      }
       $('.all-painting-list').append(textNode1);
       $('.all-painting-list').append(textNode2);
+      if(index % 3 == 2 ){
+        $('.all-painting-list').append($.parseHTML('</div class ="row">'))
+      }
     })
   }
 
@@ -78,7 +86,7 @@ $(document).ready(function($) {
   })
   function refreshPortfolio(){
     $.get({
-      url: '/api/paintings/userid/' + req.user.id,
+      url: '/api/paintings/userid/',
       error: function(){
         $(".all-painting-list").html('<br><p style="color: red">Error on refresh of your portfolio. Please try again.</p>')
       },

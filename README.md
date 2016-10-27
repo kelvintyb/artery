@@ -1,3 +1,5 @@
+ctrl-shift-3 for screenshot
+
 A link to your hosted working app in the URL section of your GitHub repo
 
 A readme.md file with:

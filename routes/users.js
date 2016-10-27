@@ -72,7 +72,7 @@ router.route('/signup')
   })
   //posted from signup.ejs form
   .post(passport.authenticate('local-signup', {
-    successRedirect: '/curator',
+    successRedirect: '/portfolio',
     failureRedirect: '/signup',
     failureFlash: true
   }))
@@ -86,7 +86,7 @@ router.route('/login')
   })
   //USE CUSTOM CALLBACKS HERE TO REFACTOR INTO AJAX-FRIENDLY LOGIN
   .post(passport.authenticate('local-login', {
-    successRedirect: '/curator',
+    successRedirect: '/portfolio',
     failureRedirect: '/signup',
     failureFlash: true
   }))
@@ -97,8 +97,11 @@ router.get('/error', function(req, res) {
 })
 
 router.get('/profile', authPass, function(req, res) {
-  res.render('users/profile', {
-    message: req.flash('signupMessage')
+  User.findById(req.user.id, function(err, user){
+    res.render('users/profile', {
+      message: req.flash('signupMessage'),
+      user: user
+    })
   })
 })
 

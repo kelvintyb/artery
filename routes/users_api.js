@@ -32,6 +32,7 @@ router.put('/edit',function(req,res,next){
     if (req.body.user.local.name !== ""){
       model.local.name = req.body.user.local.name;
     }
+    //BUG: Suspect the below may be the cause of the log-in bug - user cannot log back in after logging out. further testing required
     if(req.body.user.local.email !== ""){
       model.local.email = req.body.user.local.email;
     }

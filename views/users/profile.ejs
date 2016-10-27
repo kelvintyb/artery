@@ -1,4 +1,6 @@
 <div id="profile-page">
+  <p>Current Username: <%= user.local.name %></p>
+  <p>Current Email: <%= user.local.email %></p>
   <form id="update-user-form" class="form-horizontal" action="/api/users/edit?_method=PUT" method="post">
     <div class="form-group">
       <label for="new-username" class="control-label col-md-1"> New Username: </label>
