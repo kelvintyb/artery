@@ -37,6 +37,7 @@ $(document).ready(function($) {
   })
   function fillPortfolioPage(data){
 
+
   }
   $('#search-btn').on('click',function(e){
 
@@ -47,7 +48,7 @@ $(document).ready(function($) {
     //populate search list
   })
   function fillSearchPage(){
-
+    $('#portfolio-page').html('<p>Portfolio refreshed</p>');
   }
 
   //ajax call for creating a painting
@@ -58,14 +59,13 @@ $(document).ready(function($) {
       url: '/api/paintings/create/',
       data: formdata,
       error: function() {
-        $("#search-painting-list").html('<br><p style="color: red">No painting found. Please try again.</p>')
+        $(".all-painting-list").html('<br><p style="color: red">Invalid painting details. Please try again.</p>')
       },
       success: refreshPortfolio
     })
-
   })
   function refreshPortfolio(){
-    $('#portfolio-page').html('<p>Portfolio refreshed</p>');
+    $(".all-painting-list").html('<p>Portfolio refreshed</p>');
 
     //should empty then fillPortfolioPage again
   }

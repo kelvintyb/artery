@@ -11,6 +11,14 @@ function authPass(req, res, next) {
     return res.redirect('/login');
   }
 }
+
+
+router.get('/all', function(req, res) {
+  Painting.find({})
+          .exec(function(err, paintings) {
+          res.json(paintings)
+        })
+})
 //NOTE: below is a temp solution to handling multi-category search, ideally shld handle /:id and check :id against a table to determine if it is a painting name, category or artist
 router.get('/name/:name', function(req, res) {
   var query = {'name': req.params.name};
@@ -93,5 +101,9 @@ router.post('/create',authPass,function(req,res){
     })
   })
 })
+
+// router.put
+
+// router.delete
 
 module.exports = router;
