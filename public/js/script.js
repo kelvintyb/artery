@@ -24,23 +24,38 @@ $(document).ready(function($) {
     // $('#curate-page').css('display','unset')
     //populate curate section
   })
+  function fillCuratorPage(painting){
+
+  }
   $('#portfolio-btn').on('click',function(e){
-    swal('if you are trying to get here from curator,  use the direct url as only /portfolio & /search are able to switch between themselves dynamically at this time')
+
     e.preventDefault();
     // $('#curate-page').css('display','none')
     $('#search-page').css('display','none')
     $('#portfolio-page').css('display','unset')
     //populate portfolio section
   })
+  function fillPortfolioPage(data){
+
+  }
   $('#search-btn').on('click',function(e){
-      swal('Search currently only takes in exact terms')
-      swal('if you are trying to get here from curator,  use the direct url as only /portfolio & /search are able to switch between themselves dynamically at this time')
+
     e.preventDefault();
     // $('#curate-page').css('display','none')
     $('#portfolio-page').css('display','none')
     $('#search-page').css('display','unset')
     //populate search list
   })
+  function fillSearchPage(){
+
+  }
+
+  //ajax call for creating a painting
+  $('#painting-form').on('submit',function(e){
+    e.preventDefault();
+    
+  })
+
   //ajax calls for search function
   $('#searchName').on('submit', function(e) {
     e.preventDefault()
