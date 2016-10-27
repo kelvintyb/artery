@@ -3,9 +3,13 @@ body {
   color: #4C191B;
 }
 
+.row{
+  margin-bottom: 1em;
+}
+
 .jumbotron{
   background:#ECFFF8;
-  background-image: url('http://silviahartmann.com/background-tile-art/images/pastel-purple-art-background.jpg');
+  background-image: url('https://silviahartmann.com/background-tile-art/images/pastel-purple-art-background.jpg');
 }
 
 .new-painting, .painting, .artshow{

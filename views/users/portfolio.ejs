@@ -1,57 +1,61 @@
-<div id="portfolio-page">
-  <% allPaintings.forEach(function(painting) { %>
-    <div class="col-md-4 painting">
-      <a href=<%= painting.permalink %>>
-          Name: <%= painting.name %><br>
-          Category: <%= painting.category %><br>
-          Artist: <%= painting.artist %><br>
-          <img class='img-thumbnail' src=<%= painting.imageUrl %> alt=<%= painting.name %> style="max-width:18.75em;max-height:25em"><br>
-          Price: <%= painting.price %><br>
-          Likes: <%= painting.likes %>
-      </a>
-    </div>
-    <% }) %>
+<section id="portfolio-page" class="row">
 
-    <form class="painting-form" action="#" method="post">
+    <form class="painting-form form-inline" action="#" method="post">
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4">
+          <label for="painting-name">Painting Name: </label>
           <input type="text" name="painting[name]" id="painting-name" placeholder="Painting Name" class="u-full-width" required>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
+          <label for="painting-category">Category: </label>
           <input type="text" name="painting[category]" id="painting-category" placeholder="Category" class="u-full-width" required>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
+          <label for="painting-artist">Artist: </label>
           <input type="text" name="painting[artist]" id="painting-artist" placeholder="Artist" class="u-full-width" required>
         </div>
-
-        <div class="col-md-3">
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <label for="painting-imageUrl">Image Link: </label>
           <input type="text" name="painting[imageUrl]" id="painting-imageUrl" placeholder="Image Link here" class="u-full-width" required>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
+          <label for="painting-price">Price: </label>
           <input type="text" name="painting[price]" id="painting-price" placeholder="Price" class="u-full-width" required>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
+          <label for="painting-permalink">Permalink: </label>
           <input type="text" name="painting[permalink]" id="painting-permalink" placeholder="Permalink here" class="u-full-width" required>
         </div>
       </div>
-      <input type="submit" value='Save My Painting'>
+      <div class="row">
+        <input class="btn-default btn" type="submit" value="Add">
+      </div>
     </form>
 
-      <div class="all-painting-list container">
-      <% allPaintings.forEach(function(painting) { %>
-      <div class="col-md-4 painting">
-        <a href=<%= painting.permalink %>>
-            Name: <%= painting.name %><br>
-            Category: <%= painting.category %><br>
-            Artist: <%= painting.artist %><br>
-            <img class='img-thumbnail' src=<%= painting.imageUrl %> alt=<%= painting.name %> style="width:150px;height:150px"><br>
-            Price: <%= painting.price %><br>
-        </a>
-      </div>
+    <div class="all-painting-list row">
+      <% allPaintings.forEach(function(painting,index) { %>
+      <% if (index === 0 || index % 3 === 0){ %>
+        <div class='row'>
+      <% } %>
+        <div class="col-md-4 painting">
+          <a href=<%= painting.permalink %>>
+              Name: <%= painting.name %><br>
+              Category: <%= painting.category %><br>
+              Artist: <%= painting.artist %><br>
+              <img class='img-thumbnail' src=<%= painting.imageUrl %> alt=<%= painting.name %> style="width:16.75em;max-height:23em"><br>
+              Price: <%= painting.price %><br>
+          </a>
+        </div>
+      <% if (index === 0 || index % 3 === 0){ %>
+        <div class='row'>
+      <% } %>
       <% }) %>
-</div>
+    </div>
+  </section>
 
-<div id="search-page" style="display:none;">
+<section id="search-page" style="display:none;">
   <div class="col-md-4">
     <form id="searchName">
       <div class="input-group">
@@ -72,7 +76,7 @@
           </div><!-- /input-group -->
       </form>
   </div><!-- /.col-md-4 -->
-      <div class="col-md-4">
+  <div class="col-md-4">
         <form id="searchArtist">
           <div class="input-group">
             <span class="input-group-btn">
@@ -88,4 +92,4 @@
     <div id="search-painting-list">
     </div>
   </div>
-</div
+</section>
