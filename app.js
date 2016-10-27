@@ -72,9 +72,7 @@ app.use(express.static(__dirname + '/public'))
 var userRoutes = require('./routes/users')
 var paintingRoutes = require('./routes/paintings')
 var paintingApiRoutes = require('./routes/paintings_api')
-var userApiRoutes = require('./routes/paintings_api')
-
-
+var userApiRoutes = require('./routes/users_api')
 app.use('/', userRoutes)
 //NOTE:to access API for paintings
 app.use('/api/paintings',paintingApiRoutes)

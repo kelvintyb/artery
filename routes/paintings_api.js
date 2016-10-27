@@ -94,7 +94,6 @@ router.post('/create',authPass,function(req,res){
     likes: 0,
     ownedBy: req.user.id
   });
-
   newPainting.save(function(err, newPainting) {
     if (err) throw err;
     User.findByIdAndUpdate(req.user.id, {

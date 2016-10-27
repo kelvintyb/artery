@@ -132,16 +132,18 @@ $(document).ready(function($) {
   //ajax call for editing user
   $('#update-user-form').on('submit',function(e){
     e.preventDefault();
-    swal('ajax fired')
     var formdata = $(this).serializeArray();
-    $.put({
+    console.log(formdata)
+    $.ajax({
       url: '/api/users/edit',
+      type: 'PUT',
       data: formdata,
       error: function() {
         $("#profile-page").append('<br><p style="color: red">Update did not go through. Please try again.</p>')
       },
-      success: function(){
+      success: function(user){
         swal('User updated!')
+        $("profile-page").append(user)
       }
     })
   })
