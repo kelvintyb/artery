@@ -34,13 +34,23 @@ $(document).ready(function($) {
     $('#search-page').css('display','none')
     $('#portfolio-page').css('display','unset')
     //populate portfolio section
+    $.get({
+      url: '/api/paintings/userid/' + req.user.id,
+      error: function(){
+        $(".all-painting-list").html('<br><p style="color: red">Error on refresh of your portfolio. Please try again.</p>')
+      },
+      success: fillPortfolioPage
+    })
   })
-  function fillPortfolioPage(data){
-
-
+  function fillPortfolioPage(paintings){
+    $('.all-painting-list').empty();
+    paintings.forEach({
+      $('.all-painting-list').append(painting);
+      //NOTE: LAST LEFT IT OFF HERE 2710 1215pm
+    })
   }
-  $('#search-btn').on('click',function(e){
 
+  $('#search-btn').on('click',function(e){
     e.preventDefault();
     // $('#curate-page').css('display','none')
     $('#portfolio-page').css('display','none')
@@ -48,7 +58,7 @@ $(document).ready(function($) {
     //populate search list
   })
   function fillSearchPage(){
-    $('#portfolio-page').html('<p>Portfolio refreshed</p>');
+
   }
 
   //ajax call for creating a painting
@@ -65,9 +75,13 @@ $(document).ready(function($) {
     })
   })
   function refreshPortfolio(){
-    $(".all-painting-list").html('<p>Portfolio refreshed</p>');
-
-    //should empty then fillPortfolioPage again
+    $.get({
+      url: '/api/paintings/userid/' + req.user.id,
+      error: function(){
+        $(".all-painting-list").html('<br><p style="color: red">Error on refresh of your portfolio. Please try again.</p>')
+      },
+      success: fillPortfolioPage
+    })
   }
 
   //ajax calls for search function

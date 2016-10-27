@@ -19,6 +19,14 @@ router.get('/all', function(req, res) {
           res.json(paintings)
         })
 })
+
+router.get('/userid/:userid', function(req,res){
+  var query = {'ownedBy': req.params.userid};
+  Painting.find(query)
+          .exec(function(err, paintings){
+            res.json(paintings)
+          })
+})
 //NOTE: below is a temp solution to handling multi-category search, ideally shld handle /:id and check :id against a table to determine if it is a painting name, category or artist
 router.get('/name/:name', function(req, res) {
   var query = {'name': req.params.name};
