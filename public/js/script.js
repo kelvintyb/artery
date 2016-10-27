@@ -18,7 +18,7 @@ $(document).ready(function($) {
   // })
   $('#instructions-btn').on('click',function(e){
     e.preventDefault();
-    swal('Hello from the other side', '1) Log in or sign up first\n2) At your portfolio, you can view your owned paintings or add new paintings to your collection\n3) Go on to search paintings through the navbar- this is strict search\n4) If you want to see the index, try direct url \/search\n5) At Curator, you can like random art from the database\n6) You may also edit your username or email in the Edit Account page\(\/profile\)'
+    swal('Hello from the other side', '1) Log in or sign up first\n2) At your portfolio, you can view your owned paintings or add new paintings to your collection\n3) Go on to search paintings through the navbar- this is strict search\n4) If you want to see the index, try direct url \/search\n5) At Curator, you can like random art from the database\n6) You may also edit your username or email in the Edit Account page\(\/profile\)')
   })
   //ajax calls for navbar-based page population
   $('#curate-btn').on('click',function(e){

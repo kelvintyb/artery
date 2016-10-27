@@ -1,4 +1,9 @@
 ctrl-shift-3 for screenshot
+#Artery
+
+##Technologies used
+jQuery/ajax, Bootstrap, sweetAlert, Express, Mongoose
+For a full list of dependencies, please refer to package.json.
 
 A link to your hosted working app in the URL section of your GitHub repo
 
@@ -8,8 +13,6 @@ Explanations of the technologies used
 A couple paragraphs about the general approach you took
 
 
-Installation instructions for any dependencies
-package.json
 
 Link to your user stories – who are your users, what do they want, and why?
 
@@ -28,6 +31,8 @@ Recommendations pane
 
 Getting Ajax right, and working with plain routes in conjunction with ajax refactoring
 
-UNSOLVED PROBLEMS
+##Known Bugs
+
+##Areas to work on
 UI/styling
 single page app
