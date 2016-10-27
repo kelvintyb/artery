@@ -109,9 +109,13 @@ router.post('/create',authPass,function(req,res){
     })
   })
 })
-
 // router.put
 
 // router.delete
-
+router.delete('/:id',authPass, function(req,res){
+  Painting.findByIdAndRemove(req.params.id,function(err){
+    if (err) throw new Error(err);
+    res.redirect('/portfolio')
+  })
+})
 module.exports = router;
