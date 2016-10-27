@@ -53,8 +53,22 @@ $(document).ready(function($) {
   //ajax call for creating a painting
   $('#painting-form').on('submit',function(e){
     e.preventDefault();
-    
+    var formdata = $(this).serializeArray();
+    $.post({
+      url: '/api/paintings/create/',
+      data: formdata,
+      error: function() {
+        $("#search-painting-list").html('<br><p style="color: red">No painting found. Please try again.</p>')
+      },
+      success: refreshPortfolio
+    })
+
   })
+  function refreshPortfolio(){
+    $('#portfolio-page').html('<p>Portfolio refreshed</p>');
+
+    //should empty then fillPortfolioPage again
+  }
 
   //ajax calls for search function
   $('#searchName').on('submit', function(e) {

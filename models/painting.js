@@ -14,7 +14,7 @@ var paintingSchema = new mongoose.Schema({
   ownedBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
-  },
+  }
 })
 
 var Painting = mongoose.model('Painting', paintingSchema)

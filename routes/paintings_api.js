@@ -45,7 +45,6 @@ router.post('/updatelikes', authPass, function(req, res) {
       "Cubism": 3
     };
   Painting.findById(req.body.paintingId, function(err, model) {
-    console.log(model);
     if (err) throw new Error(err);
     model.likes += 1;
     currPaintingScore = categoryHelper[model.category]
@@ -65,6 +64,33 @@ router.post('/updatelikes', authPass, function(req, res) {
   }, function(err, model) {
     if (err) throw new Error(err);
     res.redirect('/curator');
+  })
+})
+router.post('/create',authPass,function(req,res){
+  var paintingAttr = req.body.painting;
+  var newPainting = new Painting({
+    name: paintingAttr.name,
+    category: paintingAttr.category,
+    artist: paintingAttr.artist,
+    imageUrl: paintingAttr.imageUrl,
+    price: paintingAttr.price,
+    permalink: paintingAttr.permalink,
+    likes: 0,
+    ownedBy: req.user.id
+  });
+
+  newPainting.save(function(err, newPainting) {
+    console.log(newPainting);
+    if (err) throw err;
+    User.findByIdAndUpdate(req.user.id, {
+      $addToSet: {
+        "ownList": newPainting.id
+      }
+    }, function(err, model) {
+      if (err) throw new Error(err);
+      console.log(model)
+      res.json(model)
+    })
   })
 })
 
