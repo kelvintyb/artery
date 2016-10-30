@@ -35,11 +35,14 @@ Refer to WDI6-Code-Highlights.js - this runs through the ajax calls/routes/logic
 3. Refactor into single page app with ajax
 4. Refactor manual appending within ajax call to embedded templates within layouts.ejs
 5. Full implementation of recommendations pane from data collected through Curator - User's categoryScore property is already being updated from Curator clicks, left with linking that score with dynamic display of appropriate art in the pane
+6. Single search field (check Job's implementation in /search route + think of fuzzy search)
+
 
 ## Known Bugs
 1. Ajax switching between portfolio/search tabs on the navbar only work from /portfolio - for any other page, will need to enter urls directly
 2. Delete buttons in portfolio page break after submission of paintings due to ajax refresh and the way button code is being populated - refresh the page /portfolio for proper deletion capability
 3. User may lose ability to log back in after logging out if the user edited his username/email from /profile
+4. Dislikes may increment like property of painting due to post route of /updatelikes
 
 ## Technologies used
 Express, Mongoose, NodeJS, jQuery/ajax, Bootstrap, sweetAlert
