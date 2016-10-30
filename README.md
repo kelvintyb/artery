@@ -1,5 +1,7 @@
 # Artery
 Heroku link: (https://artery-io.herokuapp.com/)
+Link to code highlights: (https://github.com/kelvintyb/artery/blob/master/WDI6-Code-Highlights.js)
+
 Art curation app built while exploring the MongoDB/Express/Node stack and routing between Models & Views.
 Initially conceptualised as a Tinder/Pinterest for art, and as a base template for C2B/B2B art rentals.
 
@@ -16,9 +18,14 @@ User B is a business owner in search of paintings to furnish his new office. He 
 User C is a casual dabbler in art. He/she wants to browse through a collection of paintings and be able to search for certain artists or art movements that he has heard of, in order to refine his understanding of those paintings.
 
 ## Diagrams and Wireframes
-Link to ERD
-Link to User Flow Diagram
-Link to wireframes – Curator View / Portfolio & Search View
+Entity Relationship Diagram: (https://github.com/kelvintyb/artery/blob/master/wdi_presentation/ERD.png)
+
+User Flow Diagram:
+(https://github.com/kelvintyb/artery/blob/master/wdi_presentation/User%20Flow%20Chart.png)
+
+Wireframes - Curator View / Portfolio & Search View:
+![Curator View](https://github.com/kelvintyb/artery/blob/master/wdi_presentation/Wireframe1.jpg)
+![Portfolio/Search View](https://github.com/kelvintyb/artery/blob/master/wdi_presentation/wireframe2.jpg)
 
 ## Code Highlights
 Refer to WDI6-Code-Highlights.js - this runs through the ajax calls/routes/logic of note for facilitating the user flow, and also the RESTful routes for paintings_api.js
