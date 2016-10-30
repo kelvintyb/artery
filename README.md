@@ -18,10 +18,10 @@ User B is a business owner in search of paintings to furnish his new office. He 
 User C is a casual dabbler in art. He/she wants to browse through a collection of paintings and be able to search for certain artists or art movements that he has heard of, in order to refine his understanding of those paintings.
 
 ## Diagrams and Wireframes
-Entity Relationship Diagram: (https://github.com/kelvintyb/artery/blob/master/wdi_presentation/ERD.png)
+Entity Relationship Diagram: (https://github.com/kelvintyb/artery/blob/master/wdi_presentation/ERD.jpg)
 
 User Flow Diagram:
-(https://github.com/kelvintyb/artery/blob/master/wdi_presentation/User%20Flow%20Chart.png)
+(https://github.com/kelvintyb/artery/blob/master/wdi_presentation/User%20Flow%20Chart.jpg)
 
 Wireframes - Curator View / Portfolio & Search View:
 ![Curator View](https://github.com/kelvintyb/artery/blob/master/wdi_presentation/Wireframe1.jpg)
