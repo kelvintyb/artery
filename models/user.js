@@ -2,9 +2,22 @@ var mongoose = require('mongoose')
 var bcrypt = require('bcrypt')
 var userSchema = new mongoose.Schema({
   local: {
-    name: String,
-    email: String,
-    password: String,
+    name: {
+      type: String,
+      required: true,
+      unique: true
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      match: /.+\a.+\..+/
+    },
+    password: {
+      type: String,
+      required: true,
+      minlength: [8,"PASSWORD TOO SHORT"]
+    },
   },
   likeList: [{
     type: mongoose.Schema.Types.ObjectId,

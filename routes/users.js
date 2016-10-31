@@ -65,8 +65,8 @@ router.route('/signup')
     //NOTE: can use below for index of users in api
     User.find({}, function(err, allUsers) {
       res.render('users/index', {
-        allUsers: allUsers,
-        message: req.flash('signupMessage')
+        message: req.flash('signupMessage'),
+        errors: req.flash('errorMessage')
       })
     })
   })
@@ -81,7 +81,8 @@ router.route('/signup')
 router.route('/login')
   .get(authCheck, function(req, res) {
     res.render('users/login', {
-      message: req.flash('loginMessage')
+      message: req.flash('loginMessage'),
+      errors: req.flash('errorMessage')
     })
   })
   //USE CUSTOM CALLBACKS HERE TO REFACTOR INTO AJAX-FRIENDLY LOGIN

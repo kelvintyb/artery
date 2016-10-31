@@ -1,4 +1,5 @@
 <h2>Create new user</h2>
+
 <form class="new-user-passport" action="/signup" method="post">
   <%= message %>
   <div class="row">
@@ -14,13 +15,16 @@
     <input type="submit" value='Save My User'>
   </div>
 
+<% if(errors.length > 0) { %>
+    <h3>Error found</h3>
+    <ul>
+    <% for (var error in errors[0]) { %>
+      <li><%= errors[0][error].message %></li>
+    <% } %>
+    </ul>
+<% } %>
+
   <ul id="all-user-list">
-  <% allUsers.forEach(function(user) { %>
-    <li>
-        <%= user.local.name %><br>
-        <%= user.local.email %><br>
-        <%= user.local.password %>
-    </li>
-  <% }) %>
+
   </ul>
 </form>

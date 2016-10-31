@@ -19,13 +19,17 @@ module.exports = function(passport) {
     User.findOne({
       'local.email': email
     }, function(err, foundUser) {
-      if (err) return next(err);
-
+      if (err) {
+        return next(err)
+      }
       if (foundUser) {
         return next(null, false, req.flash('signupMessage', 'Email has been taken'))
       } else {
         User.create(req.body.user, function(err, savedUser) {
-          if (err) return next(err);
+          if (err) {
+            console.log(err)
+            return next(null, false, req.flash('errorMessage', err.errors))
+          }
           return next(null, savedUser);
         })
       }

@@ -1,6 +1,21 @@
 <h2>Create new user</h2>
+
+<% if (message.length) > 0 {%>
+<h3>Error Found</h3>
+<%= message %>
+<%}%>
+
+<% if(errors.length > 0) { %>
+  <% JSON.stringify(errors) %>
+  <h3>Error found</h3>
+  <ul>
+  <% for (var error in errors[0]) { %>
+    <li><%= errors[0][error].message %></li>
+  <% } %>
+  </ul>
+<% } %>
+
 <form class="new-user-passport" action="/signup" method="post">
-  <%= message %>
   <div class="row">
     <div class="col-md-4">
       <input type="text" name="user[local][name]" id="user-name" placeholder="Your name" class="u-full-width">
